@@ -1,0 +1,10 @@
+from PySide6.QtCore import Qt, Signal as pyqtSignal
+from PySide6.QtWidgets import QWidget, QLabel, QVBoxLayout
+
+class TeacherView(QWidget):
+    def __init__(self):
+        super().__init__()
+        layout = QVBoxLayout(self)
+        label = QLabel("🍎 PANEL DOCENTE\nGestión de clases y asistencia.", alignment=Qt.AlignCenter)
+        label.setStyleSheet("font-size: 18px; color: maroon;")
+        layout.addWidget(label)
