@@ -1,0 +1,10 @@
+from PySide6.QtCore import Qt, Signal as pyqtSignal
+from PySide6.QtWidgets import QWidget, QLabel, QVBoxLayout
+
+class StudentView(QWidget):
+    def __init__(self):
+        super().__init__()
+        layout = QVBoxLayout(self)
+        label = QLabel("🎓 ÁREA DEL ESTUDIANTE\nConsulta tus notas y cursos aquí.", alignment=Qt.AlignCenter)
+        label.setStyleSheet("font-size: 18px; color: green;")
+        layout.addWidget(label)
