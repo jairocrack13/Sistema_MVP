@@ -1,0 +1,28 @@
+from dataclasses import dataclass
+
+
+@dataclass(frozen=True)
+class AuthResult:
+    ok: bool
+    message: str = ""
+    role: str = ""
+
+
+class AuthService:
+    def __init__(self):
+        # Base de datos estática para pruebas
+        self._users = {
+            "admin": "1234",
+            "estudiante": "1234",
+            "maestro": "1234"
+        }
+
+    def login(self, username: str, password: str) -> AuthResult:
+        if not username or not password:
+            return AuthResult(False, "Usuario y contraseña son requeridos.")
+
+        user_lower = username.lower()
+        if user_lower in self._users and self._users[user_lower] == password:
+            return AuthResult(True, "Autenticación exitosa.", role=user_lower)
+
+        return AuthResult(False, "Usuario o contraseña incorrectos.")
